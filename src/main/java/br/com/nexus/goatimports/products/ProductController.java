@@ -34,6 +34,16 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(productCreated);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getAll() {
+
+        var products = this.productRepository.findAll();
+
+        System.out.println(products);
+
+        return ResponseEntity.ok().body(products);
+    }
+
     @GetMapping("/{idStore}")
     public ResponseEntity<?> get(@PathVariable UUID idStore) {
 
